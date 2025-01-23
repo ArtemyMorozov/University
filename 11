@@ -1,0 +1,140 @@
+#include <iostream>
+#include <cmath>
+#include <string>
+using namespace std;
+class FT1
+{
+public:
+    double x1, x2, x3, y1, y2, y3, Per, Plo;
+    string str;
+void Perim(double *Per, double *Plo)
+{
+    double s1, s2, s3, pp;
+    s1 = sqrt(pow((x2 - x1), 2) + pow((y2 - y1), 2));
+    s2 = sqrt(pow((x3 - x2), 2) + pow((y3 - y2), 2));
+    s3 = sqrt(pow((x1 - x3), 2) + pow((y1 - y3), 2));
+    *Per = s1 + s2 + s3;
+    pp = *Per / 2;
+    *Plo = sqrt(pp * (pp - s1) * (pp - s2) * (pp - s3));
+};
+void Com(FT1& first, FT1& second)
+{
+    cout << first.str << " " << "(" << first.x1 << "," << first.y1 << ")" << " " << "(" << first.x2 << "," << first.y2 << ")" << " " << "(" << first.x3 << "," << first.y3 << ")" << " " << "Perimetr= " << first.Per << " " << "Square= " << first.Plo << endl;
+    cout << second.str << " " << "(" << second.x1 << "," << second.y1 << ")" << " " << "(" << second.x2 << "," << second.y2 << ")" << " " << "(" << second.x3 << "," << second.y3 << ")" << " " << "Perimetr= " << second.Per << " " << "Square= " << second.Plo << endl;
+    if (first.Plo > second.Plo)
+        cout << first.str << " " << "&" << " " << second.str << " " << "Greate" << endl;
+    else
+        cout << first.str << " " << "&" << " " << second.str << " " << "Equal" << endl;
+};
+void Move()
+{
+    double n, m;
+    cin >> n >> m;
+    x1 += n;
+    x2 += n;
+    x3 += n;
+    y1 += m;
+    y2 += m;
+    y3 += m;
+}
+};
+class FT2 : public FT1
+{
+    public:
+    double x4, y4;
+    void Perim(double* Per, double* Plo)
+    {
+        double s1, s2, s3, pp, s4;
+        s1 = sqrt(pow((x2 - x1), 2) + pow((y2 - y1), 2));
+        s2 = sqrt(pow((x3 - x2), 2) + pow((y3 - y2), 2));
+        s3 = sqrt(pow((x4 - x3), 2) + pow((y4 - y3), 2));
+        s4 = sqrt(pow((x1 - x4), 2) + pow((y1 - y4), 2));
+        *Per = s1 + s2 + s3 + s4;
+        *Plo = s1*s2;
+    };
+    void Com(FT2& f3, FT2& f4)
+    {
+        cout << f3.str << " " << "(" << f3.x1 << "," << f3.y1 << ")" << " " << "(" << f3.x2 << "," << f3.y2 << ")" << " " << "(" << f3.x3 << "," << f3.y3 << ")" << " " << "(" << f3.x4 << "," << f3.y4 << ")" << " " << "Perimetr= " << f3.Per << " " << "Square= " << f3.Plo << endl;
+        cout << f4.str << " " << "(" << f4.x1 << "," << f4.y1 << ")" << " " << "(" << f4.x2 << "," << f4.y2 << ")" << " " << "(" << f4.x3 << "," << f4.y3 << ")" << " " << "(" << f4.x4 << "," << f4.y4 << ")" << " " << "Perimetr= " << f4.Per << " " << "Square= " << f4.Plo << endl;
+        if (f3.Plo > f4.Plo) cout << f3.str << " " << "&" << " " << f4.str << " " << "Greate" << endl;
+        else
+            cout << f3.str << " " << "&" << " " << f4.str << " " << "Less" << endl;
+    };
+    void Move()
+    {
+        double m, n;
+        cin >> m >> n;
+        x1 += m;
+        x2 += m;
+        x3 += m;
+        x4 += m;
+        y1 += n;
+        y2 += n;
+        y3 += n;
+        y4 += n;
+    }
+};
+int main()
+{
+    FT1 f1;
+    f1.Per = 0;
+    f1.Plo = 0;
+    cin >> f1.str;
+    cin >> f1.x1 >> f1.y1 >> f1.x2 >> f1.y2 >> f1.x3 >> f1.y3;
+    f1.Perim(&f1.Per, &f1.Plo);
+    FT1 f2;
+    f2.Per = 0;
+    f2.Plo = 0;
+    cin >> f2.str;
+    cin >> f2.x1 >> f2.y1 >> f2.x2 >> f2.y2 >> f2.x3 >> f2.y3;
+    f2.Perim(&f2.Per, &f2.Plo);
+    f1.Com(f1, f2);
+    FT2 f3;
+    f3.Per = 0;
+    f3.Plo = 0;
+    cin >> f3.str;
+    cin >> f3.x1 >> f3.y1 >> f3.x2 >> f3.y2 >> f3.x3 >> f3.y3 >> f3.x4 >> f3.y4;
+    f3.Perim(&f3.Per, &f3.Plo);
+    FT2 f4;
+    f4.Per = 0;
+    f4.Plo = 0;
+    cin >> f4.str;
+    cin >> f4.x1 >> f4.y1 >> f4.x2 >> f4.y2 >> f4.x3 >> f4.y3 >> f4.x4 >> f4.y4;
+    f4.Perim(&f4.Per, &f4.Plo);
+    f3.Com(f3, f4);
+    int l=1;
+
+    while (l>0)
+    {
+        cin >> l;
+        while (l) {
+            if (l == 1) {
+                f1.Move();
+                f1.Com(f1, f2);
+                break;
+            }
+            if (l == 2) {
+                f2.Move();
+                f1.Com(f1, f2);
+                break;
+            }
+            if (l == 3)
+            {
+                f3.Move();
+                f3.Com(f3, f4);
+                break;
+            }
+            if (l==4)
+            {
+                f4.Move();
+                f3.Com(f3, f4);
+                break;
+            }
+        if (l==0)
+        {
+            break;
+        }
+      }
+    };
+    return 0;
+}
