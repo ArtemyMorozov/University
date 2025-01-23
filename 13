@@ -1,0 +1,148 @@
+#include <iostream>
+using namespace std;
+
+class Arra {
+public:
+    double v1;
+    void Array(double v1, double* vec1, double* vec2) {
+        int i;
+        double o;
+        for (i = 0; i < v1; i++) {
+            cin >> o;
+            vec1[i] = o;
+            o = 0;
+        }
+        for (i = 0; i < v1; i++) {
+            cin >> o;
+            vec2[i] = o;
+            o = 0;
+        }
+    }
+    void prdouble(double v1, double* vec1, double* vec2)
+    {
+        int i;
+        cout << "massiv1= ";
+        for (i = 0; i < v1; i++) {
+            cout << vec1[i] << " ";
+        }
+        cout << endl;
+        cout << "massiv2= ";
+        for (i = 0; i < v1; i++) {
+            cout << vec2[i] << " ";
+        }
+    }
+    void sum(double v1, double* vec1, double* vec2, double* sum)
+    {
+        int i;
+        for (i=0; i<v1; i++)
+        {
+            sum[i] = (vec1[i]+vec2[i]);
+        }
+        cout << endl << "summa= ";
+        for (i=0; i<v1; i++)
+            cout << sum[i]<<" ";
+        cout << endl;
+    }
+    void razn (double v1, double* vec1, double* vec2, double* razn)
+    {
+        int i;
+        for (i=0; i<v1; i++)
+        {
+            razn[i] = (vec1[i]-vec2[i]);
+        }
+        cout << "raznost= ";
+        for (i=0; i<v1; i++)
+            cout << razn[i]<<" ";
+        cout << endl;
+    }
+    void proizv (double v1, double* vec1, double* vec2, double* proizv)
+    {
+        int i;
+        for (i=0; i<v1; i++)
+        {
+            proizv[i] = (vec1[i]*vec2[i]);
+        }
+        cout << "proizv= ";
+        for (i=0; i<v1; i++)
+            cout << proizv[i]<<" ";
+        cout << endl;
+    }
+    void del (double v1, double* vec1, double* vec2, double* del)
+    {
+        int i;
+        for (i=0; i<v1; i++)
+        {
+            del[i] = (vec1[i]/vec2[i]);
+        }
+        cout << "delenie= ";
+        for (i=0; i<v1; i++)
+            cout << del[i]<<" ";
+        cout<< endl;
+    }
+    void mult(double v1, double* vec1, double* vec2, double* mv1, double* mv2)
+    {
+        int i;
+        double mnozitel;
+        cin >> mnozitel;
+        for (i=0; i<v1; i++)
+        {
+            mv1[i] = (vec1[i]*mnozitel);
+            mv2[i] = (vec2[i]*mnozitel);
+        }
+        cout << "mult chislo massiv1= ";
+        for (i=0; i<v1; i++)
+        {
+            cout << mv1[i] << " ";
+        }
+        cout << endl << "mult chislo massiv2= ";
+        for (i=0; i<v1; i++)
+        {
+            cout << mv2[i] << " ";
+        }
+        cout << endl;
+    }
+    void srav(double v1, double* vec1, double* vec2)
+    {
+        int kol=0;
+        int pr = v1*v1;
+        for (int i=0; i<v1; i++) {
+            if (vec1[i] != vec2[i]) {
+                cout << "massivy ne ravny";
+                break;
+            }
+            for (int i = 0; i < v1; i++)
+                for (int j = 0; j < v1; j++)
+                    if (vec1[i] == vec2[j]) {
+                        kol++;
+                    }
+        }
+            if (kol == pr)
+                cout << "massivy ravny";
+
+
+    }
+};
+
+int main()
+{
+    int v1;
+    cin >> v1;
+    double* vec1 = new double[v1];
+    double* vec2 = new double[v1];
+    double* sum = new double[v1];
+    double* razn = new double[v1];
+    double* proizv = new double[v1];
+    double* del = new double[v1];
+    double* mv1 = new double[v1];
+    double* mv2 = new double[v1];
+    Arra a1;
+    a1.Array(v1, vec1, vec2);
+    a1.prdouble(v1, vec1, vec2);
+    a1.sum(v1, vec1, vec2, sum);
+    a1.razn(v1, vec1, vec2, razn);
+    a1.proizv(v1, vec1, vec2, proizv);
+    a1.del(v1, vec1, vec2, del);
+    a1.mult(v1, vec1, vec2, mv1, mv2);
+    a1.srav(v1, vec1, vec2);
+    return 0;
+}
