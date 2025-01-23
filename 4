@@ -1,0 +1,51 @@
+#include <iostream>
+#include <string>
+using namespace std;
+struct MARSH
+{
+    string c1;
+    string c2;
+    int num;
+};
+int main()
+{
+    int i,j;
+    MARSH S[8];
+    string train;
+    for (i = 0; i < 8; ++i)
+    {
+        cin >> S[i].c1;
+        cin >> S[i].c2;
+        cin >> S[i].num;
+    }
+    cin >> train;
+    MARSH P;
+    for (i = 0; i < 8; ++i)
+    {
+        for (j = i + 1; j < 8; ++j)
+        {
+            if (S[j].num < S[i].num)
+            {
+                P = S[j];
+                S[j] = S[i];
+                S[i] = P;
+            }
+        }
+    }
+    for (i = 0; i < 8; ++i)
+    {
+        cout << S[i].c1 << " " << S[i].c2 << " " << S[i].num << endl;
+    }
+    int k = 0;
+    for (i = 0; i < 8; ++i)
+    {
+        if (S[i].c1 == train || S[i].c2 == train)
+        {
+            cout << S[i].c1 << " " << S[i].c2 << " " << S[i].num << endl;
+            ++k;
+        }
+    }
+    if (k == 0)
+        cout << "No";
+    return 0;
+}
