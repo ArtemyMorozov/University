@@ -1,0 +1,15 @@
+#include <iostream>
+#include <math.h>
+using namespace std;
+int main()
+{
+    double z1,z2, a;
+    cin >> a;
+    z1 = (1 - 2 * (pow(sin(a), 2)))/ (1 + sin(2*a));
+    z1=floor( z1*100 )/100;
+    cout << z1 <<" ";
+    z2 = (1 - (sin(a)/cos(a))) / (1 +(sin(a)/cos(a)));
+    z2=floor( z2*100 )/100;
+    cout << z2;
+    return 0;
+}
