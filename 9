@@ -1,0 +1,147 @@
+#include <iostream>
+using namespace std;
+class Pair
+{
+public:
+    int a;
+    int b;
+    int c;
+    int d;
+    int e;
+    int f;
+    long long int x1, x2, sum, raz;
+};
+class Long : public Pair{};
+void enter()
+{
+    Pair m1;
+    cin >> m1.a;
+    cin >> m1.b;
+    Pair p1;
+    cin >> p1.c;
+    cin >> p1.d;
+    Pair s1;
+    Long m2;
+    cin >> m2.a;
+    cin >> m2.b;
+    Long p2;
+    cin >> p2.c;
+    cin >> p2.d;
+    Long lg;
+    s1.e = m1.a + p1.c;
+    s1.f = m1.b + p1.d;
+    lg.x1 = m2.a*10000 + m2.b;
+    lg.x2 = p2.c*10000 + p2.d;
+    lg.sum = lg.x1+lg.x2;
+    lg.raz = lg.x1 - lg.x2;
+    int proverochnik = lg.raz;
+    long long int proizv;
+    proizv = lg.x1*lg.x2;
+    cout << "(" << m1.a << "," << m1.b << ")"<< " " << "(" << p1.c << "," << p1.d << ")" << " " << "(" << s1.e << "," << s1.f << ")" << endl;
+    if (proverochnik == -9890) {
+        cout << "(" << lg.x1 << ")" << " " << "(" << lg.x2 << ")" << " " << "(" << lg.sum << ")" <<
+             "(" << "09890" << ")" << "(" << proizv << ")" << endl;
+    }
+    else if (proverochnik == 0)
+    {
+        cout << "(" << lg.x1 << ")"<< " " << "(" << lg.x2 << ")" << " " << "(" << lg.sum << ")" <<
+             "(" << "00000"<< ")"<< "(" << proizv << ")"<< endl;
+    }
+    else {
+        cout << "(" << lg.x1 << ")" << " " << "(" << lg.x2 << ")" << " " << "(" << lg.sum << ")" <<
+             "(" << lg.raz << ")" << "(" << proizv << ")" << endl;
+    }
+    int h=100;// номер команды
+    int j;
+    int i;
+    while (h) {
+        cin >> h;
+        if (h<0 || h>8){
+            cout << "You have chosen the wrong command";
+        }
+        if (h == 0) {
+            break;
+        }
+        if (h == 1) {
+            cin >> j;
+            m1.a = j;
+            s1.e = m1.a + p1.c;
+            s1.f = m1.b + p1.d;
+            cout << "(" << m1.a << "," << m1.b << ")" << " " << "(" << p1.c << "," << p1.d << ")" << " " << "(" << s1.e
+                 << "," << s1.f << ")" << endl;
+        };
+        if (h == 2) {
+            cin >> j;
+            m1.b = j;
+            s1.e = m1.a + p1.c;
+            s1.f = m1.b + p1.d;
+            cout << "(" << m1.a << "," << m1.b << ")" << " " << "(" << p1.c << "," << p1.d << ")" << " " << "(" << s1.e
+                 << "," << s1.f << ")" << endl;
+        };
+        if (h == 3) {
+            cin >> j;
+            p1.c = j;
+            s1.e = m1.a + p1.c;
+            s1.f = m1.b + p1.d;
+            cout << "(" << m1.a << "," << m1.b << ")" << " " << "(" << p1.c << "," << p1.d << ")" << " " << "(" << s1.e
+                 << "," << s1.f << ")" << endl;
+        };
+        if (h == 4) {
+            cin >> j;
+            p1.d = j;
+            s1.e = m1.a + p1.c;
+            s1.f = m1.b + p1.d;
+            cout << "(" << m1.a << "," << m1.b << ")" << " " << "(" << p1.c << "," << p1.d << ")" << " " << "(" << s1.e
+                 << "," << s1.f << ")" << endl;
+        };
+        if (h == 5) {
+            cin >> j;
+            m2.a = j;
+            lg.x1 = m2.a*10000 + m2.b;
+            lg.x2 = p2.c*10000 + p2.d;
+            lg.sum = lg.x1+lg.x2;
+            lg.raz = lg.x1 - lg.x2;
+            proizv = lg.x1*lg.x2;
+            cout << "(" << lg.x1 << ")"<< " " << "(" << lg.x2 << ")" << " " << "(" << lg.sum << ")" <<
+                 "(" << lg.raz<< ")"<< "(" << proizv << ")"<< endl;
+        };
+        if (h == 6) {
+            cin >> j;
+            m2.b = j;
+            lg.x1 = m2.a*10000 + m2.b;
+            lg.x2 = p2.c*10000 + p2.d;
+            lg.sum = lg.x1+lg.x2;
+            lg.raz = lg.x1 - lg.x2;
+            proizv = lg.x1*lg.x2;
+            cout << "(" << lg.x1 << ")"<< " " << "(" << lg.x2 << ")" << " " << "(" << lg.sum << ")" <<
+                 "(" << lg.raz<< ")"<< "(" << proizv << ")"<< endl;
+        };
+        if (h == 7) {
+            cin >> j;
+            p2.c = j;
+            lg.x1 = m2.a*10000 + m2.b;
+            lg.x2 = p2.c*10000 + p2.d;
+            lg.sum = lg.x1+lg.x2;
+            lg.raz = lg.x1 - lg.x2;
+            proizv = lg.x1*lg.x2;
+            cout << "(" << lg.x1 << ")"<< " " << "(" << lg.x2 << ")" << " " << "(" << lg.sum << ")" <<
+                 "(" << lg.raz<< ")"<< "(" << proizv << ")"<< endl;
+        };
+        if (h == 8) {
+            cin >> j;
+            p2.d = j;
+            lg.x1 = m2.a*10000 + m2.b;
+            lg.x2 = p2.c*10000 + p2.d;
+            lg.sum = lg.x1+lg.x2;
+            lg.raz = lg.x1 - lg.x2;
+            proizv = lg.x1*lg.x2;
+            cout << "(" << lg.x1 << ")"<< " " << "(" << lg.x2 << ")" << " " << "(" << lg.sum << ")" <<
+                 "(" << lg.raz<< ")"<< "(" << proizv << ")"<< endl;
+        };
+    }
+}
+int main()
+{
+    enter();
+    return 0;
+}
