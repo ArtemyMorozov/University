@@ -1,0 +1,72 @@
+
+#include <iostream>
+#include <iomanip>
+#include <cstring>
+using namespace std;
+
+int main()
+{
+    int i=0, j=0;
+    int col, A, B = 1;
+    int array[25][14] = {
+            {0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+            {1,1,1,1,1,1,1,1,1,1,1,1,1,1},
+            {2,1,1,1,1,1,1,1,1,1,3,1,1,1},
+            {4,4,4,5,1,1,1,1,1,1,1,1,1,1},
+            {6,6,6,6,6,6,6,6,6,6,1,1,1,1},
+            {8,9,1,1,1,1,1,1,1,1,1,1,1,1},
+            {1,1,1,1,1,1,1,1,1,1,1,1,20,1},
+            {2,1,1,1,1,1,1,1,1,1,1,1,1,1},
+            {1,1,1,1,1,1,1,1,1,1,1,1,10,1},
+            {1,1,1,1,1,1,1,1,1,1,1,1,11,1},
+            {21,22,1,1,1,1,1,1,1,1,1,1,1,1},
+            {21,22,1,1,1,1,1,1,1,1,1,1,1,1},
+            {1,1,1,23,23,1,23,1,1,23,1,1,1,1},
+            {1,1,1,1,1,1,1,1,1,1,1,1,1,1},
+            {1,23,1,23,1,23,1,23,23,1,1,1,1,1},
+            {16,16,16,16,16,16,16,16,16,16,1,1,1,1},
+            {17,17,17,17,17,17,17,17,17,17,1,1,1,1},
+            {1,1,1,1,1,1,1,1,1,1,1,0,1,2},
+            {21,22,1,1,1,1,1,1,1,1,1,1,1,1},
+            {1,23,23,23,23,23,23,23,23,23,1,1,1,1},
+            {23,23,23,1,1,1,1,1,1,1,1,1,1,1},
+            {1,1,1,1,1,1,1,1,1,1,1,1,15,1},
+    };
+    char inpstr[80];
+    cin.getline(inpstr, 80);
+    col = strlen(inpstr);
+    int* arr2 = new int[col];
+    for (int k = 0; k < col; k++)
+        arr2[k] = 0;
+    A = 2;
+    for (i = 0; i < col; i = i + 1)
+    {
+        switch (inpstr[i])
+        {
+            case '0':  B = array[A][0]; break;
+            case '1':  B = array[A][1]; break;
+            case '2':  B = array[A][2]; break;
+            case '3':  B = array[A][3]; break;
+            case '4':  B = array[A][4]; break;
+            case '5':  B = array[A][5]; break;
+            case '6':  B = array[A][6]; break;
+            case '7':  B = array[A][7]; break;
+            case '8':  B = array[A][8]; break;
+            case '9':  B = array[A][9]; break;
+            case '{':  B = array[A][10]; break;
+            case '}':  B = array[A][11]; break;
+            case '.':  B = array[A][12]; break;
+            case ',':  B = array[A][13]; break;
+            case ';':  B = array[7][A]; break;
+            case ' ':  B = A; break;
+            default: B = 1;
+        }
+        A = B;
+    };
+    if(B==1)
+        cout << "STRING is WRONG";
+    else if(B==0)
+        cout << "STRING is RIGHT";
+    delete[] arr2;
+    return 0;
+};
